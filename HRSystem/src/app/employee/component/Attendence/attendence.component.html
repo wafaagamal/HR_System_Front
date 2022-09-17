@@ -1,0 +1,35 @@
+<div>
+  <h4 class="h4 d-flex justify-content-center"> Attendence Data</h4>
+</div>
+<div class="container card" style="width: 70rem;">
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">SignIn</th>
+        <th scope="col">SignOut</th>
+        <th scope="col">WorkingHours</th>
+        <th scope="col">Date</th>
+        <th scope="col">In</th>
+        <th scope="col">Out</th>
+
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let att of AttendenceList| paginate: { itemsPerPage: 10, currentPage: page } ; let i = index " [ngClass]="{'alert-danger': att.workingHours<=8 }">
+        <th scope="row">{{i+1}}</th>
+        <td>{{att.signIn}}</td>
+        <td>{{att.signOut}}</td>
+        <td >{{att.workingHours}}</td>
+        <td>{{att.date}}</td>
+        <td>  <button type="button" class="btn btn-primary" (click)="SignIn()">In</button></td>
+        <td>  <button type="button" class="btn btn-primary" (click)="SignOut()">Out</button></td>
+
+      </tr>
+     
+    </tbody>
+  </table>
+
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+
+</div>

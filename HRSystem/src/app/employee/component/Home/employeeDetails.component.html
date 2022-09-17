@@ -1,0 +1,30 @@
+<div>
+    <h4 class="h4 d-flex justify-content-center"> Employee Data</h4>
+</div>
+<div class="container card" style="width: 75rem;">
+   
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">MangerName</th>
+        <th scope="col">Attendence</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let emp of EmployeeList| paginate: { itemsPerPage: 10, currentPage: page } ; let i = index ">
+        <th scope="row">{{i+1}}</th>
+        <td>{{emp.name}}</td>
+        <td>{{emp.email}}</td>
+        <td>{{emp.manger.name}}</td>
+        <td>  <button type="button" class="btn btn-primary" (click)="goToAttendence(emp.id)">Show</button></td>
+      </tr>
+     
+    </tbody>
+  </table>
+
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+
+</div>
